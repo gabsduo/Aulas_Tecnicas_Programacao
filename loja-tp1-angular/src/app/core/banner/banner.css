@@ -1,0 +1,13 @@
+section {
+    background-color: #ccc;
+    box-sizing: border-box;
+    height: 200px;
+    padding: 20px;
+    text-align: center;
+}
+
+p{
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+}
