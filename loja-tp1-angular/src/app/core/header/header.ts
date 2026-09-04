@@ -7,14 +7,15 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './header.css',
 })
 export class Header {
-  titulo = input.required<string>();
-  textoSobre = output<string>();
+  titulo = input.required<string>(); // Chamada de API
+  textosobre = output<string>(); // Chamada de API
 
-  enviarSobre():void{
-    this.textoSobre.emit('Técnicas de Programação I.\nDesenvolvido por Gabriel Demichelli')
+  enviarSobre(): void {
+    this.textosobre.emit('Técnincas de Programação I.\nDesenvolvido por Gustavo')
   }
 
-  exibirMensagem(msg: string):void{
+  exibirMensagem(msg: string): void {
     alert(msg);
   }
+
 }

@@ -9,7 +9,7 @@
 
 .contador button{
     border: none;
-    background: #2f9e41;
+    background-color: #2f9e41;
     color: #fff;
     padding: 6px 10px;
     border-radius: 4px;
@@ -17,7 +17,7 @@
 }
 
 .contador button:hover{
-    opacity: .9;
+    opacity: 0.9;
 }
 
 .valor {

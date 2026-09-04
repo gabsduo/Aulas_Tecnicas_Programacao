@@ -1,28 +1,15 @@
-import { Component, computed, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { LoggerService } from '../../../core/services/logger/logger.service';
 import { Produto } from '../../../model/produto';
-import { CardProduto } from "../card-produto/card-produto";
+import { delay, Observable, of } from 'rxjs';
 
-@Component({
-  selector: 'app-lista-produtos',
-  imports: [CardProduto],
-  templateUrl: './lista-produtos.html',
-  styleUrl: './lista-produtos.css',
+@Injectable({
+  providedIn: 'root',
 })
-export class ListaProdutos {
+export class ProdutoService {
+  private logger = inject(LoggerService);
 
-  apenasPromo = signal(false);
-
-  produtosExibidos = computed(() =>
-    this.apenasPromo()
-    ? this.produtos.filter(p => p.promo)
-    : this.produtos
-  );
-
-  altenarPromo(){
-    this.apenasPromo.update(v => !v);
-  }
-
-  produtos = <Produto[]>[
+  private readonly listaMock = <Produto[]>[
     {
       id: 1,
       nome: 'Mounjaro',
@@ -61,12 +48,12 @@ export class ListaProdutos {
     },
   ];
 
-  onViewProduct(id: number) {
-    alert(`Visualizando produto id: ${id}`);
+  listar(): Observable<Produto[]>{
+    
+    this.logger.info("[PRODUTO SERVICE] - Retornando lista de produtos")
+    return of(this.listaMock).pipe(
+      delay(250)
+    );
   }
 
-  onAddProduct(produto: {id: number, qtd: number}) {
-    alert(`Adicionando produto id: ${produto.id} | Quantidade: ${produto.qtd}`);
-  }
 }
-
